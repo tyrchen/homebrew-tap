@@ -9,7 +9,6 @@ cask "axon-app" do
   desc "Slack-style channels for the agent sessions on your Macs"
   homepage "https://axon.iostream.app/"
 
-  conflicts_with formula: "tyrchen/tap/axon"
   depends_on macos: :tahoe
 
   app "Axon.app"
