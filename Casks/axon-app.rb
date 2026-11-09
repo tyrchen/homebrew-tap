@@ -2,10 +2,10 @@
 # The app carries the axon CLI (`Contents/Helpers/axon`), which runs the daemon; the cask links it onto PATH.
 # Casks cannot declare a conflict with a formula; linking the binary fails while the axon formula is installed.
 cask "axon-app" do
-  version "1.5.4"
-  sha256 "548c476e346c7e7d07f0e483bdd6e5b6c4a1e49f5510bd901bb6726c03fa4d46"
+  version "1.5.5"
+  sha256 "4da37ccda1bbcbee8e3351d5d7c3de48101020aff5aeee6031e59cf065ff174b"
 
-  url "https://github.com/tyrchen/homebrew-tap/releases/download/axon-mac-v1.5.4/Axon-1.5.4-macos.zip"
+  url "https://github.com/tyrchen/homebrew-tap/releases/download/axon-mac-v1.5.5/Axon-1.5.5-macos.zip"
   name "Axon"
   desc "Slack-style channels for the agent sessions on your Macs"
   homepage "https://axon.iostream.app/"
@@ -15,12 +15,12 @@ cask "axon-app" do
   app "Axon.app"
   binary "#{appdir}/Axon.app/Contents/Helpers/axon"
 
-  # An upgrade replaces the CLI under a running daemon of the app's CLI: restart it on the new binary.
-  postflight do
-    agent = File.expand_path("~/Library/LaunchAgents/app.iostream.axon.daemon.plist")
-    if File.exist?(agent) && File.read(agent).include?("#{appdir}/Axon.app/Contents/Helpers/axon")
-      # A failed restart must not fail the upgrade; the app retries when it opens.
-      system_command "#{appdir}/Axon.app/Contents/Helpers/axon", args: ["service", "install"], must_succeed: false
+  # An upgrade replaces the CLI under a running daemon of the app's CLI: `service refresh` restarts it on the new
+  # binary, and leaves a daemon of another axon alone. A failed restart must not fail the upgrade; the app
+  # reinstalls the service when it opens.
+  postflight_steps do
+    if_path_exists "~/Library/LaunchAgents/app.iostream.axon.daemon.plist" do
+      run "{{appdir}}/Axon.app/Contents/Helpers/axon", args: ["service", "refresh"], must_succeed: false
     end
   end
 
