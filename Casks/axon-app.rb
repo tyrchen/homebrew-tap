@@ -2,10 +2,10 @@
 # The app carries the axon CLI (`Contents/Helpers/axon`), which runs the daemon; the cask links it onto PATH.
 # Casks cannot declare a conflict with a formula; linking the binary fails while the axon formula is installed.
 cask "axon-app" do
-  version "1.5.6"
-  sha256 "a9d7771d0eae06247545afa70845d68a68d7495159fe63ca75f05322c2fbe5cd"
+  version "1.5.8"
+  sha256 "77745fc6e467290e48e7e4c8d68d27911b1df2ccf1534ecdf4ce669eb951b180"
 
-  url "https://github.com/tyrchen/homebrew-tap/releases/download/axon-mac-v1.5.6/Axon-1.5.6-macos.zip"
+  url "https://github.com/tyrchen/homebrew-tap/releases/download/axon-mac-v1.5.8/Axon-1.5.8-macos.zip"
   name "Axon"
   desc "Slack-style channels for the agent sessions on your Macs"
   homepage "https://axon.iostream.app/"
