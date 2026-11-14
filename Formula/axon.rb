@@ -2,9 +2,9 @@
 class Axon < Formula
   desc "Drive Claude Code and Codex sessions on your Mac from your iPhone"
   homepage "https://axon.iostream.app"
-  url "https://github.com/tyrchen/homebrew-tap/releases/download/axon-v1.11.1/axon-1.11.1-macos-universal.tar.gz"
-  version "1.11.1"
-  sha256 "e86cec240d61781561a56c4a503c39dec512daa630711f690e7e1f5cc1a9f6a7"
+  url "https://github.com/tyrchen/homebrew-tap/releases/download/axon-v1.11.6/axon-1.11.6-macos-universal.tar.gz"
+  version "1.11.6"
+  sha256 "f643c2f696659e880833d0409cc2e447bd0c51122ab63db3e122bf713c9a33d2"
 
   depends_on :macos
 
